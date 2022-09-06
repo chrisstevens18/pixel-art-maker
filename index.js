@@ -31,9 +31,11 @@
 //     div.style.backgroundColor = randomColor();
 //     return div;
 // }
+let parentDiv = document.getElementById('parent')
 let pixels = document.getElementsByClassName('pixel')
 let brushColor1 = document.getElementsByClassName ('brushColor')
-
+let colorRed = document.getElementById('colorRed')
+let colorBlue = document.getElementById('colorBlue')
 function pixel () {
     let pixel = document.createElement('div')
     pixel.className = "pixel"
@@ -70,15 +72,31 @@ function brushColor (e) {
 
 
 
-
+//pixel loop
 for (var i = 0; i < 6475; i++) {
-    document.body.appendChild(pixel());
+    parentDiv.appendChild(pixel());
 }
 //backG();
-for (var i = 0 ; i < pixels.length; i++) {
-    pixels[i].addEventListener('click' , backG) ; 
- }
+// for (var i = 0 ; i < pixels.length; i++) {
+//     pixels[i].addEventListener('click' , backG) ; 
+//  }
 
  for (var j = 0; j < brushColor1.length; j++){
  brushColor1[j].addEventListener('click' , brushColor) ; 
  }
+ let body = document.body
+ colorRed.addEventListener('click', (e) => {
+    let body = document.body
+    body.className = 'colorRed'
+ })
+ colorBlue.addEventListener('click', (e) => {
+    let body = document.body
+    body.className = 'colorBlue'
+ })
+ parentDiv.addEventListener('click', (e) => {
+    console.log(parentDiv.className===colorBlue)
+    if (parentDiv.className==='colorBlue') {
+        console.log(e.target)
+        e.target.style.backgroundColor = 'blue';
+    }
+ })
